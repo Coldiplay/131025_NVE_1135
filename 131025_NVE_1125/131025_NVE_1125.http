@@ -1,0 +1,6 @@
+@_131025_NVE_1125_HostAddress = http://localhost:5277
+
+GET {{_131025_NVE_1125_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
