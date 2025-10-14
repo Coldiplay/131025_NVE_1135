@@ -13,10 +13,10 @@ namespace _131025_NVE_1125.CQRS_Student.GetGendersNumsByGroupId
             private readonly Db131025Context db = db;
             public async Task<GendersInfo> HandleAsync(GetGendersNumsByGroupIdCommand request, CancellationToken ct = default)
             {
-                var list = await db.Students.ToListAsync();
+                var list = db.Students.Where(s => s.IdGroup == request.GroupId);
                 int boysNum = list.Count(s => s.Gender == 1);
                 int girlsNum = list.Count(s => s.Gender == 0);
-                int otherNum = list.Count - boysNum - girlsNum;
+                int otherNum = list.Count() - boysNum - girlsNum;
                 return new GendersInfo 
                 {
                     NumOfBoys = boysNum,

@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="MyMediator\MyMediator.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.9">
       <PrivateAssets>all</PrivateAssets>
@@ -19,6 +15,12 @@
     </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
     <PackageReference Include="Scalar.AspNetCore" Version="2.8.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MyMediator">
+      <HintPath>..\..\..\..\Desktop\MyMediator-master\MyMediator\bin\Debug\net9.0\MyMediator.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

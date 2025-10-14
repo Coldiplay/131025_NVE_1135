@@ -11,9 +11,8 @@ namespace _131025_NVE_1125.CQRS_Student.ListStudentsWOutGroup
             private readonly Db131025Context db = db;
             public async Task<IEnumerable<StudentDTO>> HandleAsync(GetStudentsWOutGroupCommand request, CancellationToken ct = default)
             {
-                return await db.Students.Where(s => s.IdGroup == null)
-                                        .Select(s => (StudentDTO)s)
-                                        .ToListAsync();
+                return db.Students.Where(s => s.IdGroup == null)
+                                        .Select(s => (StudentDTO)s);
             }
         }
     }

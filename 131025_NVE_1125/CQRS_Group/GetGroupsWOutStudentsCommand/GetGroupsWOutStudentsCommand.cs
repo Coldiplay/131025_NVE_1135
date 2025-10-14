@@ -11,7 +11,7 @@ namespace _131025_NVE_1125.CQRS_Group.GetGroupsWOutStudentsCommand
             private readonly Db131025Context db = db;
             public async Task<IEnumerable<GroupDTO>> HandleAsync(GetGroupsWOutStudentsCommand request, CancellationToken ct = default)
             {
-                return db.Groups.Include("Students").Where(g => g.Students.Count == 0).Select(g => (GroupDTO)g);
+                return db.Groups.Include("Students").Include("IdSpecialNavigation").Where(g => g.Students.Count == 0).Select(g => (GroupDTO)g);
             }
         }
     }

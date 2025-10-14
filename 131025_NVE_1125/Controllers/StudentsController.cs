@@ -10,14 +10,9 @@ namespace _131025_NVE_1125.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentsController : Controller
+    public class StudentsController(Mediator mediator) : Controller
     {
-        private readonly Mediator mediator;
-        public StudentsController(Mediator mediator)
-        {
-            this.mediator = mediator;
-        }
-
+        private readonly Mediator mediator = mediator;
 
         [HttpPost("GetStudentsByGroupIndex")]
         public async Task<ActionResult<IEnumerable<StudentDTO>>> GetStudentsByGroupIndex(int idGroup)
