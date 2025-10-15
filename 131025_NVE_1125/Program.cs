@@ -19,7 +19,7 @@ namespace _131025_NVE_1125
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
-            //CQRS
+            //CQRSû
             builder.Services.AddScoped<Mediator>();
             builder.Services.AddMediatorHandlers(Assembly.GetExecutingAssembly());
 

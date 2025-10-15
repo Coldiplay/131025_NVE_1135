@@ -1,4 +1,5 @@
 ﻿using _131025_NVE_1125.CQRS_Group;
+using _131025_NVE_1125.CQRS_Group.AddGroupCommand;
 using _131025_NVE_1125.CQRS_Group.GetGroupsCommand;
 using _131025_NVE_1125.CQRS_Group.GetGroupsWOutStudentsCommand;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,14 @@ namespace _131025_NVE_1125.Controllers
         {
             var command = new GetGroupsCommand();
             return Ok(await mediator.SendAsync(command));
+        }
+
+        [HttpPost("AddGroup")]
+        public async Task<ActionResult> AddGroup(string? title, int? specialId)
+        {
+            var command = new AddGroupCommand() { Title = title, IdSpecial = specialId};
+            await mediator.SendAsync(command);
+            return Ok();
         }
 
     }
