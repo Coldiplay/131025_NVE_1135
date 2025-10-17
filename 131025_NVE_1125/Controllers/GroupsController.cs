@@ -13,14 +13,14 @@ namespace _131025_NVE_1125.Controllers
     {
         private readonly Mediator mediator = mediator;
 
-        [HttpPost("GetGroupsWOutStudents")]
+        [HttpGet("GetGroupsWOutStudents")]
         public async Task<ActionResult<IEnumerable<GroupDTO>>> GetGroupsWOutStudents()
         {
             var command = new GetGroupsWOutStudentsCommand();
             return Ok(await mediator.SendAsync(command));
         }
 
-        [HttpPost("GetGroups")]
+        [HttpGet("GetGroups")]
         public async Task<ActionResult<IEnumerable<GroupDTO>>> GetGroups()
         {
             var command = new GetGroupsCommand();
@@ -28,11 +28,11 @@ namespace _131025_NVE_1125.Controllers
         }
 
         [HttpPost("AddGroup")]
-        public async Task<ActionResult> AddGroup(string? title, int? specialId)
+        public async Task<ActionResult> AddGroup(GroupDTO group)
         {
-            var command = new AddGroupCommand() { Title = title, IdSpecial = specialId};
+            var command = new AddGroupCommand() { Title = group.Title, IdSpecial = group.IdSpecial};
             await mediator.SendAsync(command);
-            return Ok();
+            return Created();
         }
 
     }

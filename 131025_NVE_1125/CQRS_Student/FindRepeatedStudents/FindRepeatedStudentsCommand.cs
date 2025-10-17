@@ -14,17 +14,17 @@ namespace _131025_NVE_1125.CQRS_Student.FindRepeatedStudents
                 var students = await db.Students.Select(s => (StudentDTO)s).ToArrayAsync();
                 foreach (var student in students)
                 {
+                    if (result.Any(l => l.Contains(student)))
+                        continue;
+
                     var repeatedList = students.Where(s => s.Id != student.Id
                     && student.FirstName == s.FirstName
                     && student.LastName == s.LastName
                     && student.Phone == s.Phone).ToList();
                     if (repeatedList.Count > 0)
-                    {
-                        if (!result.Any(l => l.Contains(student)))
-                        {
+                    {                        
                             repeatedList.Add(student);
-                            result.Add(repeatedList.ToList());
-                        }
+                            result.Add(repeatedList);
                     }
                 }
                 return result;

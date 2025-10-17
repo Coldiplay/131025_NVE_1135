@@ -14,7 +14,7 @@ namespace _131025_NVE_1125.CQRS_Student.ListStudentByGroupId
 
             public async Task<IEnumerable<StudentDTO>> HandleAsync(ListStudentByGroupIdCommand request, CancellationToken ct = default)
             {
-                return db.Students.Where(s => s.IdGroup == request.GroupId).Select(s => (StudentDTO)s);
+                return db.Students.Where(s => s.IdGroup == request.GroupId).Include("IdGroupNavigation").Select(s => (StudentDTO)s);
             }
         }
     }

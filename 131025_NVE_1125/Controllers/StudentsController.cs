@@ -15,21 +15,21 @@ namespace _131025_NVE_1125.Controllers
     {
         private readonly Mediator mediator = mediator;
 
-        [HttpPost("GetStudentsByGroupIndex")]
+        [HttpGet("GetStudentsByGroupIndex/{idGroup}")]
         public async Task<ActionResult<IEnumerable<StudentDTO>>> GetStudentsByGroupIndex(int idGroup)
         {
             var command = new ListStudentByGroupIdCommand() { GroupId = idGroup };
             return Ok(await mediator.SendAsync(command));
         }
 
-        [HttpPost("GetGendersNumsByGroupId")]
+        [HttpGet("GetGendersNumsByGroupId/{groupId}")]
         public async Task<ActionResult<GendersInfo>> GetGendersNumsByGroupId(int groupId)
         {
             var command = new GetGendersNumsByGroupIdCommand() { GroupId = groupId };
             return Ok(await mediator.SendAsync(command));
         }
 
-        [HttpPost("GetStudentsWOutGroup")]
+        [HttpGet("GetStudentsWOutGroup")]
         public async Task<ActionResult<IEnumerable<StudentDTO>>> GetStudentsWOutGroup()
         {
             var command = new GetStudentsWOutGroupCommand();
@@ -44,7 +44,7 @@ namespace _131025_NVE_1125.Controllers
             return Ok();
         }
 
-        [HttpPost("FindRepeatedStudents")]
+        [HttpGet("FindRepeatedStudents")]
         public async Task<ActionResult<IEnumerable<IEnumerable<StudentDTO>>>> FindRepeatedStudents()
         {
             var command = new FindRepeatedStudentsCommand();
