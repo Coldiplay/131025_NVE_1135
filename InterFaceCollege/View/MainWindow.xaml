@@ -48,7 +48,7 @@
                 <MenuItem Header="Без группы" Command="{Binding SetToStudentsWOutGroup}"/>
                 <MenuItem Header="Дубликаты" Command="{Binding SetToRepeatedStudents}"/>
             </MenuItem>
-            <MenuItem Header="Группы" Command="{Binding}"/>
+            <MenuItem Header="Группы" Command="{Binding OpenGroupsWindow}"/>
         </Menu>
 
         <!--<ListView Grid.Row="1" ItemsSource="{Binding SelectedList}"/>-->

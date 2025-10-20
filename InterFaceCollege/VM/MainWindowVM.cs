@@ -1,9 +1,8 @@
 ﻿using InterFaceCollege.Model;
+using InterFaceCollege.View;
 using InterFaceCollege.VM.VMTools;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace InterFaceCollege.VM
 {
@@ -26,11 +25,14 @@ namespace InterFaceCollege.VM
         public CommandVM SetToStudents { get; set; }
         public CommandVM SetToStudentsWOutGroup { get; set; }
         public CommandVM SetToRepeatedStudents { get; set; }
-        public int GroupId { get; set; }
+
+
+        public CommandVM OpenGroupsWindow { get; set; }
+        public int GroupId { get; set; } = 1;
 
         public MainWindowVM()
         {
-            GroupId = 1;
+            //GroupId = 1;
             InitilizeCommands();
 
 
@@ -41,12 +43,18 @@ namespace InterFaceCollege.VM
             SetToStudents = new CommandVM(async () => await GetStudentsAsync(GroupId), () => true);
             SetToStudentsWOutGroup = new CommandVM(async () => await GetStudentsWOutGroupAsync(), () => true);
             SetToRepeatedStudents = new CommandVM(async () => await FindRepeatedStudentsAsync(), () => true);
+            OpenGroupsWindow = new CommandVM(() =>
+            {
+                var window = new GroupsWindow(client);
+                window.ShowDialog();
+                LoadList();
+            }, () => true);
         }
 
 
         private async void LoadList()
         {
-            await GetStudentsAsync(1);
+            await GetStudentsAsync(GroupId);
         }
         private async Task GetStudentsAsync(int idGroup) =>
             SelectedList = (await client.GetFromJsonAsync<List<StudentDTO>>($"Students/GetStudentsByGroupIndex/{idGroup}"))?

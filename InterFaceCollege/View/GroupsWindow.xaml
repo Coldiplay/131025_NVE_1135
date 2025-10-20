@@ -40,12 +40,12 @@
         </ListView>
 
         <StackPanel Grid.Column="1" Grid.Row="1" MinWidth="200">
-            <Button Content="Очистить" Command="{Binding}"/>
+            <Button Content="Очистить" Command="{Binding ClearNewGroup}"/>
             <Label Content="Название группы"/>
-            <TextBox Text="{Binding NewGroup.Title}"/>
+            <TextBox Text="{Binding NewGroup.Title, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Специальность"/>
-            <ComboBox ItemsSource="{Binding}"/>
-            <Button Content="Сохранить" Command="{Binding}"/>
+            <ComboBox DisplayMemberPath="Title" SelectedItem="{Binding SelectedSpecial}" ItemsSource="{Binding Specials}"/>
+            <Button Content="Сохранить" Command="{Binding AddGroup}"/>
         </StackPanel>
         
     </Grid>

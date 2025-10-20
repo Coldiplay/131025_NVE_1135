@@ -21,9 +21,9 @@ namespace _131025_NVE_1125.Controllers
         }
 
         [HttpGet("GetGroups")]
-        public async Task<ActionResult<IEnumerable<GroupDTO>>> GetGroups()
+        public async Task<ActionResult<IEnumerable<GroupDTO>>> GetGroups(int? specialId)
         {
-            var command = new GetGroupsCommand();
+            var command = new GetGroupsCommand() {SpecialId = specialId };
             return Ok(await mediator.SendAsync(command));
         }
 
