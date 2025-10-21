@@ -46,7 +46,9 @@ namespace InterFaceCollege.VM
             OpenGroupsWindow = new CommandVM(() =>
             {
                 var window = new GroupsWindow(client);
-                window.ShowDialog();
+               if ( window.ShowDialog() == true)
+                    window.Num
+                
                 LoadList();
             }, () => true);
         }

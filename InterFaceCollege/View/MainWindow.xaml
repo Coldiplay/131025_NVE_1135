@@ -40,7 +40,7 @@
                 </Style>
             </Menu.Resources>
             <MenuItem Header="Студенты">
-                <MenuItem Header="С Id">
+                <MenuItem Header="С Id группы:">
                     <MenuItem>
                         
                     </MenuItem>

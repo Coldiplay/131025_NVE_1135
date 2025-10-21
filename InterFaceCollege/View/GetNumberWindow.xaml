@@ -9,7 +9,7 @@
         SizeToContent="WidthAndHeight">
     <StackPanel>
         <TextBlock Text="Введите число"/>
-        <TextBox Text=""/>
-        <Button Content="Подтвердить" Command="{Binding}"/>
+        <TextBox Text="{Binding Num}"/>
+        <Button Content="Подтвердить" Click="EnterNum"/>
     </StackPanel>
 </Window>

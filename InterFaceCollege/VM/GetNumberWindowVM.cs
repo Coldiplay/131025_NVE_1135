@@ -10,7 +10,6 @@ namespace InterFaceCollege.VM
     public class GetNumberWindowVM : BaseVM
     {
         private int num;
-
         public int Num
         {
             get => num;
@@ -21,9 +20,25 @@ namespace InterFaceCollege.VM
             }
         }
 
-        public GetNumberWindowVM()
+        public CommandVM EnterNum { get; set; }
+        public GetNumberWindowVM()//ref int num)
         {
-            
+            //ref int help = ref num;
+
+
+            EnterNum = new CommandVM(() => 
+            {
+                
+            }, () => true);
+        }
+
+        //private void ChangeRef(ref int num)
+        //{
+        //    num = Num;
+        //}
+        public void Set(ref int num)
+        {
+            num = Num;
         }
     }
 }

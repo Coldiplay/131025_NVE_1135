@@ -19,9 +19,17 @@ namespace InterFaceCollege.View
     /// </summary>
     public partial class GetNumberWindow : Window
     {
+        public int Num { get; set; }
         public GetNumberWindow()
         {
             InitializeComponent();
+            DataContext = this;
+        }
+
+        private void EnterNum(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+            Close();
         }
     }
 }
